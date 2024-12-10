@@ -10,10 +10,10 @@ HMTI dengan bangga mempersembahkan website cloning Kahoot untuk keperluan FIK FA
 - **Livewire** - Framework Frontend Interaktif
 
 ## 👥 Developer Tim
-1. Ivan Putra Pratama 
-2. Primavieri Rhesa Ardana 
-3. Sahrul Amri
-4. Haydar Hilmy Al Hakim
+1. Ivan Putra Pratama (BE)
+2. Primavieri Rhesa Ardana (BE) 
+3. Sahrul Amri (FE)
+4. Haydar Hilmy Al Hakim (FE)
 
 ## 🛠 Prasyarat Sistem
 - PHP 8.0
