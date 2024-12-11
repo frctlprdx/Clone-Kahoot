@@ -25,7 +25,7 @@ HMTI dengan bangga mempersembahkan website cloning Kahoot untuk keperluan FIK FA
 
 ### Langkah 1: Clone Repositori
 ```bash
-git clone https://github.com/frctlprdx/Project-Prambanan
+git clone https://github.com/LibraTechDev/Clone-Kahoot
 cd kahoot-clone
 ```
 
