@@ -23,7 +23,24 @@ class LeaderboardResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('round_id')
+                    ->label('Round ID')
+                    ->required(),
+                Forms\Components\TextInput::make('user_id')
+                    ->label('User  ID')
+                    ->required(),
+                Forms\Components\TextInput::make('rank')
+                    ->label('Rank')
+                    ->required(),
+                Forms\Components\TextInput::make('total_points')
+                    ->label('Total Points')
+                    ->required(),
+                Forms\Components\BooleanInput::make('is_correct')
+                    ->label('Is Correct')
+                    ->required(),
+                Forms\Components\NumberInput::make('points')
+                    ->label('Points')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +48,26 @@ class LeaderboardResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('round_id')
+                    ->label('Round ID')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user_id')
+                    ->label('User  ID')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('rank')
+                    ->label('Rank')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('total_points')
+                    ->label('Total Points')
+                    ->sortable(),
+                Tables\Columns\BooleanColumn::make('is_correct')
+                    ->label('Is Correct')
+                    ->sortable(),
+                Tables\Columns\NumberColumn::make('points')
+                    ->label('Points')
+                    ->sortable(),
             ])
             ->filters([
                 //
