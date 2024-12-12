@@ -1,6 +1,10 @@
 @extends('user/layout') 
 
 @section('content')
+<div class="logo-container">
+    <img src="{{ asset('assets/img/logofikfair5.png') }}" alt="Logo Fikfair" class="img-fluid" />
+</div>
+
 <div class="container-fluid bg-white rounded-top-5 custom-shadow">
     <div class="row justify-content-center">
         <div class="col-12 text-center">
@@ -8,12 +12,14 @@
                 Welcome to FIK School Competition
             </div>
             <div class="d-flex justify-content-center align-items-center mt-0">
-                <img
-                    src="{{ asset('assets/img/Illustration.png ') }}"
-                    alt="Logo Fikfair"
-                    class="img-fluid"
-                    width="200"
-                />
+                
+                    <img
+                        src="{{ asset('assets/img/Illustration.png ') }}"
+                        alt="Logo Fikfair"
+                        class="img-fluid"
+                        width="200"
+                    />
+                
             </div>
             <div class="mb-4">
                 <div class="container mt-5">
@@ -37,10 +43,12 @@
                             />
                         </div>
                     </form>
+                    <a href="">
+                        <button class="btn button btn-welcome btn-lg px-4 py-2 mt-5 text-center">
+                        START
+                    </button>
+                </a>
                 </div>
-                <a href=""><button class="btn button btn-welcome btn-lg px-4 py-2 mt-5 text-center">
-                    START
-                </button></a>
             </div>
         </div>
     </div>
