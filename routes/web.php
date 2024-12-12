@@ -15,7 +15,19 @@ use App\Filament\Pages\RoundSelectionPage;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.welcome');
+});
+Route::get('/login', function () {
+    return view('user.login');
+})->name('user.login');
+Route::get('/level', function () {
+    return view('user.level');
+});
+Route::get('/popup', function () {
+    return view('user.popup');
+});
+Route::get('/question', function () {
+    return view('user.question');
 });
 
 Route::middleware([
