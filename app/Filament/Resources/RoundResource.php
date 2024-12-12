@@ -50,7 +50,10 @@ class RoundResource extends Resource
         ->columns([
             Tables\Columns\TextColumn::make('id'),
             Tables\Columns\TextColumn::make('name'),
-            Tables\Columns\TextColumn::make('description'),
+            Tables\Columns\TextColumn::make('description')
+            ->label('Description')
+            ->limit(20) // Batasi teks hingga 50 karakter
+            ->tooltip(fn ($record) => $record->description),
             Tables\Columns\TextColumn::make('start_time'),
             Tables\Columns\TextColumn::make('duration')
             ->label('Duration (S)'),
