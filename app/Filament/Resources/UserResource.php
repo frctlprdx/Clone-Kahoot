@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Support\Facades\Hash;
 use Filament\Forms\Components\TextInput;    
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\Builder;
@@ -32,7 +33,11 @@ class UserResource extends Resource
             ->required()
             ->maxLength(100),
             TextInput::make('password')
-            ->required(),
+            ->label('Password')
+            ->password() // Mengatur input sebagai tipe password
+            ->required()
+            ->dehydrateStateUsing(fn ($state) => Hash::make($state)) // Meng-*hash* password sebelum disimpan
+            ->maxLength(255),
             TextInput::make('registration_date')
             ->default(now('Asia/Jakarta')->format('Y-m-d H:i:s')) // Menampilkan waktu saat ini dengan zona waktu Jakarta
             ->disabled() // Menonaktifkan input agar tidak bisa diubah
@@ -44,9 +49,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('school'),
+                Tables\Columns\TextColumn::make('id')
+                ->label('ID')
+                ->getStateUsing(function ($rowLoop) {
+                    return $rowLoop->index + 1; // Nomor urut mulai dari 1
+                }),
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('school')
+                ->searchable(),
                 Tables\Columns\TextColumn::make('registration_date'),
                 Tables\Columns\TextColumn::make('updated_at'),
             ])

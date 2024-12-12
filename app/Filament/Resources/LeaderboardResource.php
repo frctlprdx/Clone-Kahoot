@@ -10,6 +10,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,17 +19,21 @@ class LeaderboardResource extends Resource
 {
     protected static ?string $model = Leaderboard::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('round_id')
-                    ->label('Round ID')
+                Select::make('user_id')
+                    ->label('User Name')
+                    ->options(\App\Models\User::pluck('name', 'id'))
                     ->required(),
-                Forms\Components\TextInput::make('user_id')
-                    ->label('User  ID')
+
+                // Select untuk round_id, menampilkan nama round
+                Select::make('round_id')
+                    ->label('Round Name')
+                    ->options(\App\Models\Round::pluck('name', 'id'))
                     ->required(),
                 Forms\Components\TextInput::make('rank')
                     ->label('Rank')
@@ -35,12 +41,12 @@ class LeaderboardResource extends Resource
                 Forms\Components\TextInput::make('total_points')
                     ->label('Total Points')
                     ->required(),
-                Forms\Components\BooleanInput::make('is_correct')
+                Toggle::make('is_correct')
                     ->label('Is Correct')
-                    ->required(),
-                Forms\Components\NumberInput::make('points')
+                    ->disabled(), 
+                Forms\Components\TextInput::make('points')
                     ->label('Points')
-                    ->required(),
+                    ->numeric(),
             ]);
     }
 
@@ -48,12 +54,12 @@ class LeaderboardResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('round_id')
+                Tables\Columns\TextColumn::make('round.name')
                     ->label('Round ID')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->label('User  ID')
+                Tables\Columns\TextColumn::make('user.name') // Menggunakan relasi 'user' untuk mengambil field 'name'
+                    ->label('User Name')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('rank')
@@ -61,12 +67,6 @@ class LeaderboardResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_points')
                     ->label('Total Points')
-                    ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_correct')
-                    ->label('Is Correct')
-                    ->sortable(),
-                Tables\Columns\NumberColumn::make('points')
-                    ->label('Points')
                     ->sortable(),
             ])
             ->filters([

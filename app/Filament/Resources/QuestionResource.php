@@ -101,7 +101,8 @@ class QuestionResource extends Resource
                 }),
             
                 Tables\Columns\TextColumn::make('content')
-                    ->label('Content'),
+                    ->label('Content')
+                    ->searchable(),
                 
                 // ImageColumn::make('image')
                 //     ->label('Image')

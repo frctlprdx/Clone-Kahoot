@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('rank')->nullable();
             $table->integer('total_points')->default(0);
-            $table->boolean('is_correct')->default(false);
-            $table->integer('points')->default(0);
+            $table->boolean('is_correct')->default(false)->nullable()   ;
+            $table->integer('points')->default(0)->nullable();
             $table->timestamps();
         });
     }
