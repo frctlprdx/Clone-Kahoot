@@ -56,4 +56,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leaderboard::class);
     }
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+    public function rounds(){
+        return $this->hasMany(Round::class);
+    }
+
 }
