@@ -17,7 +17,7 @@
     
             <!-- Button Start -->
             <div class="mb-4">
-                <button class="btn btn-lg px-4 py-2">START</button>
+                <a href="{{ route('user.login') }}"><button href="" class="btn btn-welcome btn-lg px-4 py-2">START</button></a>
             </div>
         </div>
     </div>

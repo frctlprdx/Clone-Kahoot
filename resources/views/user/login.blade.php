@@ -38,9 +38,9 @@
                         </div>
                     </form>
                 </div>
-                <button class="btn button btn-lg px-4 py-2 mt-5 text-center">
+                <a href=""><button class="btn button btn-welcome btn-lg px-4 py-2 mt-5 text-center">
                     START
-                </button>
+                </button></a>
             </div>
         </div>
     </div>

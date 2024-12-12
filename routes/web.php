@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/login', function () {
     return view('user.login');
-});
+})->name('user.login');
 Route::get('/level', function () {
     return view('user.level');
 });
