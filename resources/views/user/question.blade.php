@@ -48,16 +48,19 @@
                     <a href="{{ route('user.question', ['id' => $round->id, 'index' => $currentIndex + 1]) }}"
                         class="btn btn-primary">Next</a>
                 @else
-                    <button class="btn btn-success">Submit</button>
+                    <form action="{{ route('user.submit', ['round_id' => $round->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
                 @endif
             </div>
         </div>
     </div>
 
-    <!-- Countdown JavaScript -->
     <script>
-        // Ambil waktu dari parameter yang diberikan atau localStorage
-        let timeLeft = localStorage.getItem('timeLeft') || {{ $round->duration }}; // durasi dalam detik
+        // Ambil waktu dari localStorage atau set ke durasi awal
+        let timeLeft = localStorage.getItem('timeLeft') ? parseInt(localStorage.getItem('timeLeft')) :
+            {{ $round->duration }};
         let totalDuration = {{ $round->duration }}; // Menyimpan total durasi awal untuk perhitungan persentase
 
         // Fungsi untuk mengupdate tampilan countdown
@@ -86,6 +89,8 @@
                 localStorage.setItem('timeLeft', timeLeft); // Simpan waktu tersisa ke localStorage
             } else {
                 clearInterval(countdownInterval); // Jika waktu habis, hentikan countdown
+                alert("Waktu habis!");
+                // Anda bisa mengarahkan ke halaman lain atau menunjukkan pesan selesai
             }
         }
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->dateTime('start_time')->nullable();
             $table->integer('duration'); // in second
+            $table->enum('status', ['locked', 'unlocked', 'completed'])->default('locked');
             $table->timestamps();
         });
     }

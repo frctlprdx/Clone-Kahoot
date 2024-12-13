@@ -31,6 +31,9 @@ Route::get('/popup', function () {
 Route::get('/round/{id}/question/{index}', [QuestionController::class, 'showQuestion'])
     ->name('user.question');
 
+Route::post('/question/submit/{round_id}', [QuestionController::class, 'submit'])->name('user.submit');
+
+
 
 Route::get('/leaderboard', function(){
     return view('user.leaderboard');

@@ -20,12 +20,18 @@
 
             <div class="col-12 text-center mb-4 d-flex flex-column justify-content-center align-items-center">
                 @foreach ($rounds as $round)
-                    @if ($round->id <= $currentStage)
-                        {{-- Jika babak sudah bisa diakses --}}
+                    @if ($round->id === 1 || $round->status === 'unlocked')
+                        {{-- Ronde pertama atau ronde yang sudah dibuka --}}
                         <a href="{{ route('user.question', ['id' => $round->id, 'index' => 0]) }}"
                             class="btn btn-start2 mb-4 rounded-custom w-100 text-start shadow-lg d-flex align-items-center">
                             {{ $round->name }}
                         </a>
+                    @elseif ($round->status === 'completed')
+                        {{-- Jika babak sudah selesai --}}
+                        <button class="btn btn-start2 mb-4 rounded-custom w-100 text-start shadow-lg" disabled>
+                            {{ $round->name }}
+                            <img class="float-end" src="{{ asset('assets/img/Group.png') }}" alt="Locked" />
+                        </button>
                     @else
                         {{-- Jika babak terkunci --}}
                         <button class="btn btn-start2 mb-4 rounded-custom w-100 text-start shadow-lg" disabled>
@@ -34,6 +40,8 @@
                         </button>
                     @endif
                 @endforeach
+
+
             </div>
         </div>
     </div>
