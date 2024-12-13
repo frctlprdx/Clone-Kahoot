@@ -1,41 +1,58 @@
 @extends('user.layout')
 @section('content')
-    <div class="question" style="margin-top: 5rem;">
-        <div class="header-option">
-            <a class="back-btn">
-                <img class="back-icon" src="{{ asset('assets/img/Left-Arrow.svg') }}" />
-                <span class="text-white">{{ $round->name }}</span>
-            </a>
+<style>
+    body{
+        display: unset;
+    }
+</style>
+<div class="question">
+    <div class="header-option">
+        <a class="back-btn"
+            ><img class="back-icon" src="{{ asset('assets/img/Left-Arrow.svg') }}" /> <span class="text-white">Level 1</span></a
+        >
+    </div>
+    <div class="container-fluid2 rounded-top-5 custom-shadow">
+        <div class="time-progress">
+            <span>Waktu tersisa: 10:89</span>
+            <div
+                class="progress rounded-3"
+                style="height: 30px; background-color: #004aad"
+            >
+                <div
+                    class="progress-bar rounded-3"
+                    role="progressbar"
+                    style="width: 50%; background-color: #a5c8e6"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                ></div>
+            </div>
         </div>
-        <div class="container-fluid2 rounded-top-5 custom-shadow">
-            <div class="time-progress">
-                <span>Waktu tersisa: <span id="countdown"></span></span> <!-- Countdown element -->
-                <div class="progress rounded-3" style="height: 30px; background-color: #004aad">
-                    <div id="progress-bar" class="progress-bar rounded-3" role="progressbar"
-                        style="width: 100%; background-color: #a5c8e6" aria-valuenow="100" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                </div>
-            </div>
-
-            <!-- Menampilkan Pertanyaan -->
-            <div class="question-text">
-                <p><strong>Pertanyaan {{ $currentIndex + 1 }}:</strong> {{ $question->content }}</p>
-                @if ($question->image)
-                    <img src="{{ asset('storage/' . $question->image) }}" alt="Question Image" class="img-fluid" />
-                @endif
-            </div>
-
-            <!-- Menampilkan Opsi Jawaban -->
-            <div class="form-answer rounded-3">
-                <div class="option-answer">
-                    @foreach (json_decode($question->options, true) as $optionKey => $option)
-                        <label class="checkbox-answer" for="jawaban_{{ $currentIndex }}_{{ $optionKey }}">
-                            <input name="answer_{{ $currentIndex }}" id="jawaban_{{ $currentIndex }}_{{ $optionKey }}"
-                                hidden type="radio" />
-                            <div class="answer rounded-2">{{ $option }}</div>
-                        </label>
-                    @endforeach
-                </div>
+    
+        <div class="question-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias fuga,
+            mollitia laborum unde animi repellat nam officia tenetur ipsa id, totam
+            quisquam, aliquam autem? Recusandae at qui error voluptatem hic.
+        </div>
+    
+        <div class="form-answer rounded-3">
+            <div class="option-answer">
+                <label class="checkbox-answer" for="jawaban_A">
+                    <input name="answer" id="jawaban_A" hidden type="radio" />
+                    <div class="answer rounded-2">Jawaban A</div>
+                </label>
+                <label class="checkbox-answer" for="jawaban_B">
+                    <input name="answer" id="jawaban_B" hidden type="radio" />
+                    <div class="answer rounded-2">Jawaban B</div>
+                </label>
+                <label class="checkbox-answer" for="jawaban_C">
+                    <input name="answer" id="jawaban_C" hidden type="radio" />
+                    <div class="answer rounded-2">Jawaban C</div>
+                </label>
+                <label class="checkbox-answer" for="jawaban_D">
+                    <input name="answer" id="jawaban_D" hidden type="radio" />
+                    <div class="answer rounded-2">Jawaban D</div>
+                </label>
             </div>
 
             <!-- Tombol Navigasi -->
