@@ -1,7 +1,12 @@
 @extends('user/layout') 
 
 @section('content')
-<div class="question" style="margin-top: 5rem;">
+<style>
+    body{
+        display: unset;
+    }
+</style>
+<div class="question">
     <div class="header-option">
         <a class="back-btn"
             ><img class="back-icon" src="{{ asset('assets/img/Left-Arrow.svg') }}" /> <span class="text-white">Level 1</span></a
