@@ -13,7 +13,7 @@ HMTI dengan bangga mempersembahkan website cloning Kahoot untuk keperluan FIK FA
 1. Ivan Putra Pratama 
 2. Primavieri Rhesa Ardana 
 3. Sahrul Amri
-4. Haydar Hilmy Al Hakim
+4. Haydar Hilmy Alhakim
 5. Mustafid Kaisalana 
 
 ## 🛠 Prasyarat Sistem
