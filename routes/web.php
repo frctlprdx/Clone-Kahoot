@@ -32,6 +32,10 @@ Route::get('/round/{id}/question/{index}', [QuestionController::class, 'showQues
     ->name('user.question');
 
 
+Route::get('/leaderboard', function(){
+    return view('user.leaderboard');
+})->name('user.leaderboard');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
