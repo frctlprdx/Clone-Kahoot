@@ -18,5 +18,13 @@ class RoundController extends Controller
 
         return view('user.level', compact('rounds', 'currentStage'));
     }
-}
 
+    public function question()
+    {
+        // Ambil data round berdasarkan ID
+        $round = Round::find($id);
+
+        // Kirim data round ke view
+        return view('user.question', compact('round'));
+    }
+}

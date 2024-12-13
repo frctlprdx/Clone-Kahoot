@@ -22,7 +22,7 @@
                 @foreach ($rounds as $round)
                     @if ($round->id <= $currentStage)
                         {{-- Jika babak sudah bisa diakses --}}
-                        <a href="{{ route('user.question', ['id' => $round->id]) }}"
+                        <a href="{{ route('user.question', ['id' => $round->id, 'index' => 0]) }}"
                             class="btn btn-start2 mb-4 rounded-custom w-100 text-start shadow-lg d-flex align-items-center">
                             {{ $round->name }}
                         </a>

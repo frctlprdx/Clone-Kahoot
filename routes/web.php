@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoundController;
 use App\Filament\Pages\RoundSelectionPage;
 use App\Http\Controllers\SchoolsController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,10 @@ Route::get('/dashboard', [RoundController::class, 'index'])->name('user.level');
 Route::get('/popup', function () {
     return view('user.popup');
 });
-Route::get('/question', function () {
-    return view('user.question');
-})->name('user.question');
+
+Route::get('/round/{id}/question/{index}', [QuestionController::class, 'showQuestion'])
+    ->name('user.question');
+
 
 Route::middleware([
     'auth:sanctum',
