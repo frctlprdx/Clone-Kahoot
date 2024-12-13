@@ -18,6 +18,12 @@ class Question extends Model
         'options' => 'array', // Field 'options' akan otomatis di-cast menjadi array
     ];
 
+    public function setDescriptionAttribute($value)
+    {
+        // Hapus semua tag HTML dan simpan hanya teks biasa
+        $this->attributes['content'] = strip_tags($value);
+    }
+    
     public function round()
     {
         return $this->belongsTo(Round::class);

@@ -38,7 +38,6 @@ class RoundResource extends Resource
             ->label('Description')// Opsional: menambahkan label
             ->columnspan(2),
             DateTimePicker::make('start_time')
-            ->required()
             ->label('Start Time'), // Label untuk start time
             TextInput::make('duration')
             ->required()

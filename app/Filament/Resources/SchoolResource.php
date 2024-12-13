@@ -34,6 +34,11 @@ class SchoolResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                ->label('ID')
+                ->getStateUsing(function ($rowLoop) {
+                    return $rowLoop->index + 1; // Nomor urut mulai dari 1
+                }),
                 Tables\Columns\TextColumn::make('school'),
             ])
             ->filters([

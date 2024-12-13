@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 // Route::get('/view_kelas', [AdminController::class,'view_kelas']);
-Route::get('/signin', [SchoolsController::class, 'index'])->name('user.login');
+Route::get('/signup', [SchoolsController::class, 'index'])->name('user.register');
 Route::get('/dashboard', [RoundController::class, 'index'])->name('user.level');
 Route::get('/popup', function () {
     return view('user.popup');
