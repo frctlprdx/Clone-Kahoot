@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Forms\Components\Json;
 use Filament\Forms\Components\TextInput;  
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\DateTimePicker; 
@@ -19,6 +20,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\RichEditor;
 
 class QuestionResource extends Resource
 {
@@ -30,10 +32,12 @@ class QuestionResource extends Resource
     {
         return $form->schema([
             // Input soal dalam bentuk teks
-            TextArea::make('content')
+            RichEditor::make('content')
                 ->label('Question Content')
                 ->required()
-                ->maxLength(255),
+                ->maxLength(255)
+                ->columnSpan(2) // Membuat lebar input lebih lebar
+                ->helperText('Enter the content of the question.'),
         
             // Input untuk gambar soal
             FileUpload::make('image')
@@ -41,31 +45,19 @@ class QuestionResource extends Resource
                 ->image() // Menandakan bahwa hanya gambar yang dapat diunggah
                 ->disk('public') // Tentukan disk untuk menyimpan gambar
                 ->directory('questions') // Direktori untuk gambar soal
-                ->required(false), // Gambar tidak wajib diisi, dapat dikosongkan
+                ->required(false)
+                ->columnSpan(2), // Membuat lebar file upload sedikit lebih kecil
+                
         
-            // Input jawaban A
-            TextInput::make('option_a')
-                ->label('Option A')
+            // Input JSON untuk opsi jawaban
+            Textarea::make('options')
+                ->label('Options')
                 ->required()
-                ->maxLength(255),
-        
-            // Input jawaban B
-            TextInput::make('option_b')
-                ->label('Option B')
-                ->required()
-                ->maxLength(255),
-        
-            // Input jawaban C
-            TextInput::make('option_c')
-                ->label('Option C')
-                ->required()
-                ->maxLength(255),
-        
-            // Input jawaban D
-            TextInput::make('option_d')
-                ->label('Option D')
-                ->required()
-                ->maxLength(255),
+                ->helperText('Input options as JSON (e.g., {"a": "Option A", "b": "Option B", "c": "Option C", "d": "Option D"})')
+                ->default(
+                    '{"a": "", "b": "", "c": "", "d": ""}'
+                    )
+                ->columnSpan(2), // Lebar lebih besar untuk input opsi
         
             // Pilihan jawaban yang benar
             Select::make('correct_option')
@@ -76,7 +68,8 @@ class QuestionResource extends Resource
                     'C' => 'C',
                     'D' => 'D',
                 ])
-                ->required(),
+                ->required()
+                ->columnSpan(1), // Lebar input lebih kecil
         
             // Pilih ID babak
             Select::make('round_id')
@@ -84,10 +77,9 @@ class QuestionResource extends Resource
                 ->options(
                     \App\Models\Round::all()->pluck('name', 'id')
                 )
-                ->required(),
-    
+                ->required()
+                ->columnSpan(1), // Lebar input lebih kecil
         ]);
-        
     }
 
     public static function table(Table $table): Table
@@ -102,6 +94,7 @@ class QuestionResource extends Resource
             
                 Tables\Columns\TextColumn::make('content')
                     ->label('Content')
+                    ->limit(20) 
                     ->searchable(),
                 
                 // ImageColumn::make('image')

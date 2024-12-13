@@ -17,10 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->string('image')->nullable();
-            $table->string('option_a')->default(''); 
-            $table->string('option_b')->default(''); 
-            $table->string('option_c')->default(''); 
-            $table->string('option_d')->default(''); 
+            $table->json('options')->nullable();
             $table->string('correct_option');
             $table->foreignId('round_id')->constrained('rounds')->onDelete('cascade');
             $table->timestamps();

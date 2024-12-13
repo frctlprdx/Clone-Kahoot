@@ -15,6 +15,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\DateTimePicker; 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\RichEditor;
 
 class RoundResource extends Resource
 {
@@ -28,12 +29,14 @@ class RoundResource extends Resource
         ->schema([
             TextInput::make('name')
             ->required()
-            ->maxLength(50),
-            TextArea::make('description')
+            ->maxLength(50)
+            ->columnspan(2),
+            RichEditor::make('description')
             ->required()
             ->maxLength(500)
             ->helperText('Maksimal 500 karakter') // Menambahkan catatan kepada pengguna
-            ->label('Description'), // Opsional: menambahkan label
+            ->label('Description')// Opsional: menambahkan label
+            ->columnspan(2),
             DateTimePicker::make('start_time')
             ->required()
             ->label('Start Time'), // Label untuk start time

@@ -10,8 +10,12 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'content', 'image', 'option_a', 'option_b','option_c', 'option_d', 'correct_option', 'round_id', 'timer'
+        'content', 'image', 'option', 'correct_option', 'round_id', 'timer'
 
+    ];
+
+    protected $casts = [
+        'options' => 'array', // Field 'options' akan otomatis di-cast menjadi array
     ];
 
     public function round()
