@@ -252,6 +252,178 @@ body {
     }
 }
 
+
+/* LEADERBOARD */
+main.container-leaderboard {
+    margin: 5% 0;
+    user-select: none;
+
+    div.title-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        color: #004AAD;
+        margin: 12px 0;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      div.icon-wrapper {
+        width: fit-content;
+        height: auto;
+        aspect-ratio: 1/1;
+        border-radius: 12px;
+        box-shadow: 3px 5px 0px 0px #1d7fff;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #004AAD;
+
+        .fa-award {
+          font-size: 2.3rem;
+          color: #fff;
+        }
+      }
+    }
+
+    section.winner-section {
+      height: 100%;
+      width: 100%;
+
+      .winner-board {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 8px 12px;
+        border-radius: 12px;
+        background-color: #fff;
+        padding: 24px 16px;
+
+        #winner-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .winner:nth-child(1),
+          .winner:nth-child(2),
+          .winner:nth-child(3) {
+            .winner-name {
+
+              h4,
+              span {
+                color: #fff !important;
+              }
+            }
+
+            .ordinal {
+              color: #fff !important;
+            }
+
+            .winner-info {
+              span {
+                color: #fff !important;
+              }
+            }
+
+            .icon {
+              border: 1px solid transparent !important;
+            }
+          }
+
+          .winner:nth-child(1) {
+            background-color: #FDC311;
+          }
+
+          .winner:nth-child(2) {
+            background-color: #7708f3;
+          }
+
+          .winner:nth-child(3) {
+            background-color: #FE0E85;
+          }
+
+          .winner {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-bottom: 1px solid #b9b9b9;
+            border-radius: 12px;
+            transition-duration: 150ms;
+
+            .ordinal {
+              font-size: 1.2rem;
+              font-weight: 700;
+              color: #000;
+            }
+
+            .winner-name {
+              flex: 1;
+
+              h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0;
+              }
+
+              span {
+                font-size: 0.9rem;
+                letter-spacing: 0.02rem;
+                font-weight: 400;
+              }
+            }
+
+            .winner-info {
+              display: flex;
+              justify-self: center;
+              align-items: center;
+
+              span {
+                font-weight: 800;
+                font-size: 1.2rem;
+                padding: 8px;
+                color: #004AAD;
+              }
+            }
+
+            .icon {
+              border-radius: 9999px;
+              width: 2.8rem;
+              aspect-ratio: 1/1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 1px solid #c2c2c2;
+            }
+          }
+
+          .runnerUp:hover {
+            background-color: #f2f2f2;
+          }
+
+          .winner:nth-child(1):hover,
+          .winner:nth-child(2):hover,
+          .winner:nth-child(3):hover {
+            opacity: 0.7;
+          }
+
+        }
+      }
+    }
+  }
+  /* END OF LEADERBOARD */
+
+
+
 /* loader */
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */

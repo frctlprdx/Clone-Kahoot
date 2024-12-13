@@ -30,6 +30,10 @@ Route::get('/question', function () {
     return view('user.question');
 })->name('user.question');
 
+Route::get('/leaderboard', function(){
+    return view('user.leaderboard');
+})->name('user.leaderboard');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
